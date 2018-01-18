@@ -35,7 +35,7 @@ body{
   margin-top: 50px;
   width: 650px;
   height: 450px;
-  border-radius: 4px;
+  border-radius: 3px;
   box-shadow: 0px 2px 8px 0px rgba(0,0,0,0.3);
 }
 .clock-to-angle{
