@@ -6,27 +6,28 @@
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
-    <div class="content">
-      <div class="container vertical">
-        <h1>Get angle º value with specific time.</h1>
+    <div class="container vertical">
+      <div class="clock-to-angle">
+        <h2>Get angle º value with specific time.</h2>
         <hr>
-        <span id="Error" class="error">Bad Request!</span>
-        <form class="container vertical">
-          <div class="container form-content">
+        <span id="error" class="error">Bad Request</span>
+        <form class="content vertical">
+          <div class="content form-content">
             <div class="form-input">
               <h4>Hours</h4>
-              <input type="number" id="hours" placeholder="Hours">
+              <input type="number" id="input_hours" placeholder="Hours">
             </div>
             <div class="form-input">
               <h4>Minutes</h4>
-              <input type="number" id="minutes" placeholder="Minutes">
+              <input type="number" id="input_minutes" placeholder="Minutes">
             </div>
           </div>
           <button type="button" name="button" onclick="get_inputs()">Send Information</button>
         </form>
+
         <div class="result">
-          <p id="text" class="visible">Add hours and minutes to get an angle.</p>
-          <p id="result-message" class="result-message"> At <i id="hour-result">0 Hours</i> with <i id="minutes-result">0 Minutes</i> there's an angle of:</p>
+          <p id="info-message" class="visible">Add hours and minutes to get an angle.</p>
+          <p id="result-message"> At <b id="hour-result">0 Hours</b> with <b id="minutes-result">0 Minutes</b> there's an angle of:</p>
           <div class="value">
             <span id="final-value">0</span>º
           </div>
@@ -35,76 +36,5 @@
 
     </div>
   </body>
-
-  <script type="text/javascript">
-
-  function clock_to_angle(hours, minutes) {
-    var txt_hour = hours+" Hours";
-    var txt_min =  minutes+" Minutes";
-    if(hours == 12){
-      hours = 0;
-    }
-    var m_Angle = (minutes*360)/60;
-    var h_Angle = (hours*360)/12;
-    var desv = (minutes*30)/60;
-    var result = (Math.abs(m_Angle - (h_Angle+desv)));
-    document.getElementById('Error').classList.remove('visible');
-    document.getElementById('text').classList.remove('visible');
-    document.getElementById('result-message').classList.add('visible');
-    document.getElementById('hour-result').textContent = txt_hour;
-    document.getElementById('minutes-result').textContent = txt_min;
-    document.getElementById('final-value').textContent = result;
-  }
-
-
-  function reset(){
-    document.getElementById('Error').classList.add('visible');
-    document.getElementById('result-message').classList.remove('visible');
-    document.getElementById('text').classList.add('visible');
-    document.getElementById('text').textContent = "Write a valid value.";
-    document.getElementById('hour-result').textContent = "0 Hours";
-    document.getElementById('minutes-result').textContent = "0 Minutes";
-    document.getElementById('final-value').textContent = "0";
-  }
-
-  function not_null(value) {
-    if(value != null & value != ""){
-      return true;
-    }else{
-      return false;
-    }
-  }
-
-  function in_limit(val, limit_1, limit_2){
-    if(val>=limit_1 && val<=limit_2){
-      return true;
-    }else{
-      return false
-    }
-  }
-
-  function validate(hour, min){
-    var val_hour = not_null(hour);
-    var val_min = not_null(min);
-    if (val_hour == true && val_min == true){
-      var val_hour = in_limit(hour, 1, 12);
-      var val_min = in_limit(min, 0, 59);
-      if (val_hour == true && val_min == true){
-        clock_to_angle(hour, min);
-      }else{
-        reset();
-      }
-    }else{
-      reset();
-    }
-  }
-
-  function get_inputs(){
-    var hour = document.getElementById('hours').value;
-    var min = document.getElementById('minutes').value;
-    validate(hour, min);
-    document.getElementById('hours').focus();
-  }
-
-  </script>
+  <script src="js/script.js" charset="utf-8"></script>
 </html>

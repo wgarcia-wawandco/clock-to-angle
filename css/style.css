@@ -14,53 +14,61 @@
   font-family: open-sans-sm;
   src: url("../fonts/OpenSans-Semibold.ttf");
 }
-
-*, h1, p{
+*{
   margin: 0;
   font-family: open-sans-l;
   color: #787878;
 }
-h1{
+h2{
   font-family: open-sans-r;
 }
 body, .content, .container, span, .result, .value{
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: white;
+}
+body{
+  background-color: rgba(230, 230, 230, 0.1);
+}
+.container{
+  margin-top: 50px;
+  width: 650px;
+  height: 450px;
+  border-radius: 5px;
+  box-shadow: 0px 2px 8px 0px rgba(0,0,0,0.3);
+}
+.clock-to-angle{
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+  height: 400px;
+  width: 560px;
 }
 .vertical{
   flex-direction: column;
 }
-.content{
-  margin-top: 50px;
-  padding: 20px;
-  width: 600px;
-  height: 500px;
-  border-radius: 5px;
-  box-shadow: 5px 5px 5px 5px #888888;
-}
 hr{
   border: none;
   border-top: 1px solid #e6e6e6;
-  margin: 20px 0;
+  margin: 15px 0;
   color: #e6e6e6;
   width: 100%;
 }
 span.error{
   width: 100%;
-  padding: 5px 0;
+  padding: 7px 0;
   border: 1px solid #c65353;
-  border-radius: 5px;
+  box-shadow: inset 0px 0px 1px 0px rgba(198,83,83,1);
+  border-radius: 4px;
   color: #c65353;
   display: none;
   transition: all .4s ease;
   text-align: center;
 }
-
 .visible{
   display: inline-block !important;
 }
-
 form{
   width: 100%;
   margin-top: 20px;
@@ -72,30 +80,32 @@ form{
 .form-input{
   display: flex;
   flex-direction: column;
-  width: 45%;
+  width: 48%;
   justify-content: center;
   align-items: flex-start;
 }
 .form-content input{
-  width: 82%;
+  box-sizing: border-box;
+  border: none;
+  width: 100%;
   margin: 5px 0;
-  border: 1px solid #e6e6e6;
-  border-radius: 5px;
-  padding: 10px 20px;
+  border: 1px solid rgba(120, 120, 120, 0.5);
+  border-radius: 4px;
+  padding: 10px;
   font-family: open-sans-r;
   transition: all .4s ease;
 }
-
 .form-content input:focus{
   outline: none;
   border: 1px solid #46b02c;
 }
 .form-content input::placeholder{
-  font-family: open-sans-r;
-  color: #787878;
+  font-family: open-sans-l;
+  font-size: 14px;
+  color: #e6e6e6;
 }
-
 button{
+  cursor: pointer;
   margin-top: 20px;
   width: 100%;
   border: none;
@@ -111,7 +121,7 @@ button{
   flex-direction: column;
   background-color: #fcf9d7;
   width: 100%;
-  height: 180px;
+  height: 130px;
   margin-top: 20px;
 }
 .result p,{
@@ -124,25 +134,23 @@ button{
   margin-top: 20px;
   background-color: white;
   width: 100px;
-  height: 80px;
+  height: 60px;
 }
-
 .value, .value span{
   color: #787878;
   font-family: open-sans-sm;
   font-size: 32px;
 }
 
-.result-message{
-  display: none;
-}
-
-.result-message i{
-  color: #46b02c;
-  font-style: normal;
-  font-family: open-sans-r;
-}
-
 #text{
   display: none;
+}
+#info-message{
+  display: none;
+}
+#result-message{
+  display: none;
+}
+#result-message b{
+  color: #46b02c;
 }
